@@ -1,0 +1,39 @@
+## To Backup DWM:
+
+### Backup When you customize any of the suckless tools to your liking, 
+##    you’ll know it is not as easy as editing a config file, 
+##    especially after you patch them. So keeping a backup of them 
+##    is not as easy as saving a dotfile to a git repository and linking it to .
+##    config/name-of-program. In this section I’ll show you the steps to make a backup 
+##    of your suckless tools while still having the ability to update them when a new version comes out (which doesn’t happen that often).
+
+##  First of all you have to be in the directory of the program you want to 
+##    make a backup of. Then you’ll rename the remote of the git repository from origin to upstream.
+
+ git remote rename origin upstream
+
+## Then you’ll go to github.com (or gitlab) and make a new repository,
+##    call it the same as the program you are backing up for convenience. 
+##    Then copy the repository’s URL and type:
+ git add remote origin <the repository's url>
+
+## Now if you type:
+ git remote -v
+
+## You’ll see that you have two remotes: one called “upstream” 
+##    (pointing to suckless.org) 
+##    and the other one called “origin” 
+##    (pointing to your repository). 
+##    Now all that’s left is that you push your build to the master branch of your repository, 
+##    to do that you type:
+ git push origin master
+
+## If the guys at suckless update the program, all you’ll have to do is go to that program’s directory, and run the following:
+ git pull upstream master
+
+## Source 
+https://distro.tube
+
+
+####
+git config --global credential.helper store
